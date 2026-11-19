@@ -1,0 +1,29 @@
+PAINEL DA FROTA — OMEGA 7  (app web instalável + Firebase)
+
+CONTEÚDO
+  public/index.html            o app (arquivo único)
+  public/manifest.webmanifest  torna o app instalável (celular e PC)
+  public/sw.js                 abre o app mesmo sem internet (os dados vêm do Firebase quando houver conexão)
+  public/icon-192.png / icon-512.png
+  firestore.rules              regras do banco (só usuário autenticado acessa a coleção painel_frota)
+  firebase.json / .firebaserc  configuração de publicação
+
+1) CONFIGURAR O FIREBASE
+  - Console Firebase > Configurações do projeto > Seus apps > Web: copie o firebaseConfig.
+  - Abra public/index.html, procure "const FB_CONFIG=" (perto do fim) e cole seus valores.
+  - Ative: Firestore Database e Authentication > Sign-in method > Anônimo.
+  - Em .firebaserc troque SEU_PROJETO pelo ID do projeto.
+
+2) PUBLICAR (precisa do Node.js)
+  npm install -g firebase-tools
+  firebase login
+  firebase deploy
+
+  O app fica em https://SEU_PROJETO.web.app
+
+3) INSTALAR
+  Abra o endereço no Chrome/Edge (PC ou Android) > "Instalar app".
+  iPhone (Safari): Compartilhar > Adicionar à Tela de Início.
+
+4) USO SEM PUBLICAR
+  Abrir public/index.html direto no navegador também funciona (sem o modo instalável).
